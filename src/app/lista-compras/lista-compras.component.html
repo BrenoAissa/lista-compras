@@ -12,7 +12,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th class="id-tabela">#</th>
                     <th>Item</th>
                     <th></th>
                 </tr>
@@ -20,7 +20,7 @@
             <tbody>
                 @for(i of lista; track i.id){
                     <tr>
-                        <td>{{ i.id }}</td>
+                        <td class="id-tabela">{{ i.id }}</td>
                         <td>
                             <span [ngClass]="{ 'item-riscado' : i.comprado }">
                                 {{ i.nome }}
