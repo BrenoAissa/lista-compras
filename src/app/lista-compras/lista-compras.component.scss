@@ -33,6 +33,7 @@ input {
     border: 2px solid #007bff;
     border-radius: 6px;
     font-size: 16px;
+    max-width: 160px;
 }
 
 input:focus {
@@ -141,5 +142,8 @@ input[type="checkbox"] {
 
     .id-tabela {
         display: none;
+    }
+    input {
+    max-width: none;
     }
 }

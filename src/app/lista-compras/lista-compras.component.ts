@@ -43,6 +43,7 @@ export class ListaComprasComponent implements OnInit{
 
   riscarItem(itemLista: ItemLista){
     itemLista.comprado = !itemLista.comprado;
+    console.log(itemLista);
     this.salvarLista();
   }
 
