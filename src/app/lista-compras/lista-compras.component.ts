@@ -43,8 +43,15 @@ export class ListaComprasComponent implements OnInit{
     this.quantidade = 0;
   }
 
-  riscarItem(itemLista: ItemLista){
+  riscarItem(itemLista: ItemLista) {
     itemLista.comprado = !itemLista.comprado;
+
+    if (itemLista.comprado) {
+      this.lista = this.lista
+        .filter(item => item !== itemLista)
+        .concat(itemLista);
+    }
+
     this.salvarLista();
   }
 
@@ -63,6 +70,5 @@ export class ListaComprasComponent implements OnInit{
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .trim();
-}
-
+  }
 }
