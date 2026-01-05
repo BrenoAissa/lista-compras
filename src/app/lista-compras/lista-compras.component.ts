@@ -24,8 +24,9 @@ export class ListaComprasComponent implements OnInit{
 
   adicionarItem(){
     let itemLista = new ItemLista();
+    const nomeNormalizado = this.normalizarTexto(this.item);
     
-    const existe = this.lista.some(item => item.nome.toLowerCase() === this.item.toLowerCase());
+    const existe = this.lista.some(item => this.normalizarTexto(item.nome) === nomeNormalizado);
 
     if(existe){
       alert("Item já adicionado");
@@ -39,11 +40,11 @@ export class ListaComprasComponent implements OnInit{
     this.lista.push(itemLista);
     this.salvarLista();
     this.item = "";
+    this.quantidade = 0;
   }
 
   riscarItem(itemLista: ItemLista){
     itemLista.comprado = !itemLista.comprado;
-    console.log(itemLista);
     this.salvarLista();
   }
 
@@ -55,4 +56,13 @@ export class ListaComprasComponent implements OnInit{
   salvarLista() {
     localStorage.setItem('listaCompras', JSON.stringify(this.lista));
   }
+
+  normalizarTexto(texto: string): string {
+  return texto
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim();
+}
+
 }
