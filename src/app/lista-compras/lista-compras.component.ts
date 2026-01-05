@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ListaComprasComponent implements OnInit{
   item: string = "";
+  quantidade: number = 0;
   lista: ItemLista[] = [];
 
     ngOnInit(): void {
@@ -33,6 +34,7 @@ export class ListaComprasComponent implements OnInit{
     
     itemLista.nome = this.item;
     itemLista.id = this.lista.length + 1;
+    itemLista.quantidade = this.quantidade;
 
     this.lista.push(itemLista);
     this.salvarLista();

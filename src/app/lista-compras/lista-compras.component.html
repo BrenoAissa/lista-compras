@@ -3,6 +3,7 @@
 
     <form #frm="ngForm" class="add-item-form" (ngSubmit)="adicionarItem()">
         <input type="text" id="item" name="item" [(ngModel)]="item" placeholder="Digite o nome do item"/>
+        <input type="number" id="quantidade" name="quantidade" [(ngModel)]="quantidade" placeholder="Digite a quantidade"/>
         
         <button type="submit">Adicionar</button>
         <button type="button" (click)="limparLista()">Limpar</button>
@@ -13,6 +14,7 @@
             <thead>
                 <tr>
                     <th class="id-tabela">#</th>
+                    <th>Qtde</th>
                     <th>Item</th>
                     <th></th>
                 </tr>
@@ -21,6 +23,7 @@
                 @for(i of lista; track i.id){
                     <tr>
                         <td class="id-tabela">{{ i.id }}</td>
+                        <td>{{ i.quantidade }}</td>
                         <td>
                             <span [ngClass]="{ 'item-riscado' : i.comprado }">
                                 {{ i.nome }}
